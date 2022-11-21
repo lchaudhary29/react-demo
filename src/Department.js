@@ -1,38 +1,34 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
-function Employee() {
+function Department() {
     
-  const [employees,setEmployees]=useState([]);
+  const [departments,setDepartments]=useState([]);
     useEffect(()=> {
-      fetch("https://localhost:44306/api/Employee")
+      fetch("https://localhost:44306/api/Dept")
         .then(res => res.json())
         .then(
           (result) => {
-            setEmployees(result);
+            setDepartments(result);
           }
         );
     });
   
       return (
         <div>
-          <h2>Employees Data...</h2>
+          <h2>Departments Data...</h2>
           <table>
             <thead>
               <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Location</th>
-                <th>Salary</th>
               </tr>
             </thead>
             <tbody>
-            {employees.map(emp => (
-              <tr key={emp.Id}>
-                <td>{emp.Id}</td>
-                <td>{emp.Name}</td>
-                <td>{emp.Location}</td>
-                <td>{emp.Salary}</td>
+            {departments.map(d => (
+              <tr key={d.Id}>
+                <td>{d.Id}</td>
+                <td>{d.Name}</td>
                 </tr>
             ))}
             </tbody>
@@ -41,4 +37,4 @@ function Employee() {
         );
 }
 
-export default Employee
+export default Department

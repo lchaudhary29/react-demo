@@ -1,9 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Switch,
+  Route,
+  Routes,
+  NavLink,
+} from "react-router-dom";
 import Employee from "./Employee";
 import Department from "./Department";
 import Project from "./Project";
+import InvalidPath from "./InvalidPath";
 
 function App() {
   return (
@@ -11,19 +19,43 @@ function App() {
       <h2>Welcome to App Component...</h2>
       <ul>
         <li>
-          <Link to="/">Employees</Link>
+          <NavLink
+            className={({ isActive }) => (isActive ? "testClass" : "")}
+            to="/"
+          >
+            Employees
+          </NavLink>
         </li>
         <li>
-          <Link to="/departments">Departments</Link>
+          <NavLink
+            className={({ isActive }) => (isActive ? "testClass" : "")}
+            to="/departments"
+          >
+            Departments
+          </NavLink>
         </li>
         <li>
-          <Link to="/projects">Projects</Link>
+          <NavLink
+            className={({ isActive }) => (isActive ? "testClass" : "")}
+            to="/projects"
+          >
+            Projects
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => (isActive ? "testClass" : "")}
+            to="/xyz"
+          >
+            Invalid Path
+          </NavLink>
         </li>
       </ul>
       <Routes>
-        <Route path="/" element={<Employee/>}></Route>
-        <Route path="/departments" element={<Department/>}></Route>
-        <Route path="/projects" element={<Project/>}></Route>
+        <Route path="/" element={<Employee />}></Route>
+        <Route path="/departments" element={<Department />}></Route>
+        <Route path="/projects" element={<Project />}></Route>
+        <Route  path="*" element={<InvalidPath />}></Route>
       </Routes>
     </div>
   );
