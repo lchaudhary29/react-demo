@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function EditEmployee(props) {
-  const [employee, setEmployee] = useState({});
+  const [employee, setEmployee] = useState({
+    id: "",
+    name: "",
+    location: "",
+    salary: "",
+  });
 
   let { id } = useParams();
 
@@ -13,9 +18,12 @@ function EditEmployee(props) {
       .then((result) => {
         setEmployee(result);
       });
-  },[id]);
+  }, [id]);
 
-  function changeEmployeeData(e) {}
+  function changeEmployeeData(e) {
+    debugger;
+  }
+
   return (
     <div>
       <h2>Employee Details...</h2>
@@ -24,7 +32,7 @@ function EditEmployee(props) {
           Employee ID :
           <input
             type="text"
-            name="Id"
+            name="id"
             value={employee.id}
             onChange={changeEmployeeData}
           ></input>
@@ -35,7 +43,7 @@ function EditEmployee(props) {
           Employee Name :
           <input
             type="text"
-            name="Name"
+            name="name"
             value={employee.name}
             onChange={changeEmployeeData}
           ></input>
@@ -46,7 +54,7 @@ function EditEmployee(props) {
           Employee Location :
           <input
             type="text"
-            name="Location"
+            name="location"
             value={employee.location}
             onChange={changeEmployeeData}
           ></input>
@@ -57,7 +65,7 @@ function EditEmployee(props) {
           Employee Salary :
           <input
             type="text"
-            name="Salary"
+            name="salary"
             value={employee.salary}
             onChange={changeEmployeeData}
           ></input>

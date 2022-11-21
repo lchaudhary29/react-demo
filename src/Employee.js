@@ -1,5 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import {
+  BrowserRouter,
+  Link,
+  Switch,
+  Route,
+  Routes,
+  NavLink,
+} from "react-router-dom";
 
 function Employee() {
   const [employees, setEmployees] = useState([]);
@@ -9,7 +17,7 @@ function Employee() {
       .then((result) => {
         setEmployees(result);
       });
-  });
+  }, []);
 
   return (
     <div>
@@ -32,7 +40,7 @@ function Employee() {
               <td>{emp.location}</td>
               <td>{emp.salary}</td>
               <td>
-                <a href={"/employee/" + emp.id}>Edit</a>
+                <Link to={"/employee/" + emp.id}>Edit</Link>
               </td>
             </tr>
           ))}

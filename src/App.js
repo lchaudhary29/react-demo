@@ -54,10 +54,10 @@ function App() {
       </ul>
       <Routes>
         <Route path="/" element={<Employee />}></Route>
-        <Route exact path="/employee/:id" element={<EditEmployee />}></Route>
+        <Route path="/employee/:id" element={<EditEmployee />}></Route>
         <Route path="/departments" element={<Department />}></Route>
         <Route path="/projects" element={<Project />}></Route>
-        <Route  path="*" element={<InvalidPath />}></Route>
+        <Route path="*" element={<InvalidPath />}></Route>
       </Routes>
     </div>
   );
