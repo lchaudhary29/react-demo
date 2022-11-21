@@ -1,8 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams, Outlet } from "react-router-dom";
 
-function EditEmployee(props) {
+function EmployeeSalaryInfo() {
+  let { id } = useParams();
+  return <h2>{`Employee Salary Details... ${id}`}</h2>;
+}
+
+function EmployeeProjectInfo() {
+  let { id } = useParams();
+  return <h2>{`Employee Project Details... ${id}`}</h2>;
+}
+
+function EmployeePersonalInfo() {
   const [employee, setEmployee] = useState({
     id: "",
     name: "",
@@ -75,5 +85,22 @@ function EditEmployee(props) {
     </div>
   );
 }
+function EditEmployee(props) {
+  let { id } = useParams();
 
-export default EditEmployee;
+  return (
+    <div>
+      <Link to={"/employee/" + id}>Personal</Link>&nbsp;&nbsp;
+      <Link to={"/employee/" + id + "/salary"}>Salary</Link>&nbsp;&nbsp;
+      <Link to={"/employee/" + id + "/projects"}>Projects</Link>
+      <Outlet />
+    </div>
+  );
+}
+
+export {
+  EditEmployee,
+  EmployeePersonalInfo,
+  EmployeeProjectInfo,
+  EmployeeSalaryInfo,
+};

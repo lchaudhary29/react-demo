@@ -1,9 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import {
-  BrowserRouter,
-  Link,
-  Switch,
   Route,
   Routes,
   NavLink,
@@ -12,7 +8,12 @@ import Employee from "./Employee";
 import Department from "./Department";
 import Project from "./Project";
 import InvalidPath from "./InvalidPath";
-import EditEmployee from "./EditEmployee";
+import {
+  EditEmployee,
+  EmployeePersonalInfo,
+  EmployeeProjectInfo,
+  EmployeeSalaryInfo,
+} from "./EditEmployee";
 
 function App() {
   return (
@@ -54,7 +55,21 @@ function App() {
       </ul>
       <Routes>
         <Route path="/" element={<Employee />}></Route>
-        <Route path="/employee/:id" element={<EditEmployee />}></Route>
+        <Route path="/employee" element={<EditEmployee />}>
+          <Route
+            exact
+            path=":id"
+            element={<EmployeePersonalInfo />}
+          ></Route>
+          <Route
+            path=":id/salary"
+            element={<EmployeeSalaryInfo />}
+          ></Route>
+          <Route
+            path=":id/projects"
+            element={<EmployeeProjectInfo />}
+          ></Route>
+        </Route>
         <Route path="/departments" element={<Department />}></Route>
         <Route path="/projects" element={<Project />}></Route>
         <Route path="*" element={<InvalidPath />}></Route>
