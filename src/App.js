@@ -12,6 +12,7 @@ import Employee from "./Employee";
 import Department from "./Department";
 import Project from "./Project";
 import InvalidPath from "./InvalidPath";
+import EditEmployee from "./EditEmployee";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
       </ul>
       <Routes>
         <Route path="/" element={<Employee />}></Route>
+        <Route exact path="/employee/:id" element={<EditEmployee />}></Route>
         <Route path="/departments" element={<Department />}></Route>
         <Route path="/projects" element={<Project />}></Route>
         <Route  path="*" element={<InvalidPath />}></Route>

@@ -5,7 +5,7 @@ function Department() {
     
   const [departments,setDepartments]=useState([]);
     useEffect(()=> {
-      fetch("https://localhost:44306/api/Dept")
+      fetch("http://localhost:44306/api/Department")
         .then(res => res.json())
         .then(
           (result) => {
@@ -26,9 +26,9 @@ function Department() {
             </thead>
             <tbody>
             {departments.map(d => (
-              <tr key={d.Id}>
-                <td>{d.Id}</td>
-                <td>{d.Name}</td>
+              <tr key={d.id}>
+                <td>{d.id}</td>
+                <td>{d.name}</td>
                 </tr>
             ))}
             </tbody>
